@@ -7,7 +7,7 @@
 ; The name of the installer
 Name "Dynephant"
 Caption "Dynephant ${VERSION} Setup"
-Icon Martin-Berube-Square-Animal-Elephant.ico
+Icon "..\ico\Martin-Berube-Square-Animal-Elephant.ico"
 
 ; The file to write
 !ifdef OUTFILE
@@ -25,7 +25,7 @@ InstType "No Source Files"
 ; The default installation directory
 ; NOT using $PROGRAMFILES to keep EXE portable and log files writable
 ; with just user privileges (without admin or power user)
-InstallDir C:\dynephant
+InstallDir "C:\dynephant"
 
 ; Registry key to check for directory (so if you install again, it will 
 ; overwrite the old one automatically)
@@ -53,8 +53,8 @@ Section "Dynephant Common (Required)"
   SetOutPath $INSTDIR
   ; Put license, readme, and example files there
   File LICENSE
-  File README.md
-  File update_foobar.dynv6.net.bat
+  ; File README.md
+  ; File update_foobar.dynv6.net.bat
   ; Write the installation path into the registry
   ; NOT using to keep EXE portable and installer working
   ; with just user privileges (without admin or power user)
@@ -72,25 +72,25 @@ SectionEnd
 Section "Dynephant 64-bit (GUI and CLI)"
   SectionIn 1 2
   SetOutPath $INSTDIR
-  File dynephant.exe
-  File dynephant-cli.exe
+  File ..\..\dynephant.exe
+  File ..\..\dynephant-cli.exe
   CreateShortCut "Update foobar.dynv6.net (64-bit).lnk" "$INSTDIR\dynephant.exe" "-6 -daemon=600 -host=foobar -token=randomtextforfoobarhere" "$INSTDIR\dynephant.exe" 0
 SectionEnd
 Section "Dynephant 32-bit (GUI and CLI)"
   SectionIn 1 2
   SetOutPath $INSTDIR
-  File dynephant-x86.exe
-  File dynephant-x86-cli.exe
+  File ..\..\dynephant-x86.exe
+  File ..\..\dynephant-x86-cli.exe
   CreateShortCut "Update foobar.dynv6.net (32-bit).lnk" "$INSTDIR\dynephant-x86.exe" "-6 -daemon=600 -host=foobar -token=randomtextforfoobarhere" "$INSTDIR\dynephant-x86.exe" 0
 SectionEnd
 Section "Dynephant Source"
   SectionIn 1
   SetOutPath $INSTDIR
   File _build_all.bat
-  File build_all.bat
+  File ..\..\build_all.bat
   File dynephant.au3
   File dynephant.nsi
-  File Martin-Berube-Square-Animal-Elephant.ico
+  File ..\ico\Martin-Berube-Square-Animal-Elephant.ico
 SectionEnd
 ;Section "Start Menu Shortcuts"
 ;

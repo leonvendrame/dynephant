@@ -1,25 +1,27 @@
 REM Set locations of Dynephant directory, AutoIt3 binary, AutoIt3Wrapper script,
 REM the Windows 10 SDK signtool binary, and GnuWin32's sed utility binary below
-SET DYNDIR=C:\dynephant
+REM SET DYNDIR="\"
 SET AI3="C:\Program Files (x86)\AutoIt3\AutoIt3.exe"
 SET AI3W="C:\Program Files (x86)\AutoIt3\SciTE\AutoIt3Wrapper\AutoIt3Wrapper.au3"
 SET SIGNTOOL=C:\SDK\Win\10\bin\x64\signtool.exe
-SET SED=C:\GnuWin32\bin\sed.exe
-SET MAKENSIS=C:\NSIS\makensis.exe
+SET SED="C:\Program Files (x86)\GnuWin32\bin\sed.exe"
+SET MAKENSIS="C:\Program Files (x86)\NSIS\makensis.exe"
+SET BACKUPS="BackUp"
+SET MAINDIR="..\..\"
 REM Set locations of Dynephant directory, AutoIt3 binary, AutoIt3Wrapper script,
 REM the Windows 10 SDK signtool binary, and GnuWin32's sed utility binary above
 SET TSURL=http://timestamp.digicert.com
-SET INFILE=dynephant.au3
-SET NEWINFILE="~buildme~tmp.au3"
-SET X86_CLI=dynephant-x86-cli.exe
-SET X86_GUI=dynephant-x86.exe
-SET X64_CLI=dynephant-cli.exe
-SET X64_GUI=dynephant.exe
-SET NSI=dynephant.nsi
-SET SETUP=dynephant-setup.exe
+SET INFILE="dynephant.au3"
+SET NEWINFILE="buildmetmp.au3"
+SET X86_CLI="..\..\dynephant-x86-cli.exe"
+SET X86_GUI="..\..\dynephant-x86.exe"
+SET X64_CLI="..\..\dynephant-cli.exe"
+SET X64_GUI="..\..\dynephant.exe"
+SET NSI="dynephant.nsi"
+SET SETUP="dynephant-setup.exe"
 @REM Change to Dynephant script/build directory
-IF NOT EXIST %DYNDIR% GOTO NODYNDIR
-CD /D %DYNDIR%
+REM IF NOT EXIST %DYNDIR% GOTO NODYNDIR
+REM CD /D %DYNDIR%
 IF EXIST %NEWINFILE% DEL %NEWINFILE%
 IF NOT EXIST %AI3% GOTO NOAI3
 IF NOT EXIST %AI3W% GOTO NOAI3W
@@ -45,6 +47,7 @@ IF NOT EXIST %MAKENSIS% GOTO NOMAKENSIS
 @REM Make setup
 IF EXIST %NSI% %MAKENSIS% %NSI%
 IF NOT EXIST %SETUP% GOTO END
+MOVE %SETUP% %MAINDIR%%SETUP%
 IF NOT EXIST %SIGNTOOL% GOTO END
 @REM Sign setup
 %SIGNTOOL% sign /a /v /fd sha256 /tr %TSURL% /td sha256 %SETUP%
@@ -74,6 +77,7 @@ GOTO END
 :END
 @REM Delete temp file and clean up build environment
 IF EXIST %NEWINFILE% DEL %NEWINFILE%
+IF EXIST %BACKUPS% RMDIR /Q/S %BACKUPS%
 DEL sed??????
 @SET DYNDIR=
 @SET AI3=

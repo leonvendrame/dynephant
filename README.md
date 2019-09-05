@@ -76,7 +76,7 @@ The command line arguments are:
 Not setting -daemon results in only one update (or attempt) occurring.
 Setting -daemon to less than 300 seconds (5 minutes) results in the default
 of 1800 seconds (30 minutes) being used.
--host takes only the host name (leave off the dynv6.net part), not the FQDN.
+-host takes the host name (including the dynv6.net part).
 
 The following example assumes your Fully Qualified Domain Name (FQDN)
 for your host name is foobar.dynv6.net, and your authentication token
@@ -88,13 +88,13 @@ every 10 minutes (600 seconds), you would run Dynephant with the
 following command:
 
 ```bat
-dynephant -host=foobar -token=randomtextforfoobarhere -6 -daemon=600
+dynephant -host="foobar.dynv6.net" -token=randomtextforfoobarhere -6 -daemon=600
 ```
 
 The update_foobar.dynv6.net.bat file contains the following example
 of using the CLI version with logging.
 ```bat
-C:\dynephant\dynephant-cli -6 -daemon=600 -host=foobar -token=randomtextforfoobarhere 1>C:\dynephant\dynephant-foobar.log 2>&1
+C:\dynephant\dynephant-cli -6 -daemon=600 -host="foobar.dynv6.net" -token=randomtextforfoobarhere 1>C:\dynephant\dynephant-foobar.log 2>&1
 ```
 Only use a CLI version if you need monitoring or logging, as it stays
 running in a Command Prompt window. It is possible to run the cli
