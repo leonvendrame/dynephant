@@ -1,4 +1,4 @@
-#Dynephant
+# Dynephant
 
 Dynephant is a simple, open-source Dynamic DNS (DDNS) client for
 Windows. It is intended to have as few dependencies as possible. It
@@ -27,18 +27,18 @@ version if you want to monitor or redirect the stderr stream into
 a log file. Use the GUI version if you want the program to run
 without leaving a Command Prompt open.
 
-##Table of Contents
+## Table of Contents
 
 * [Prerequisites](#prerequisites)
 * [License](#license)
 * [Usage](#usage)
 
-##Prerequisites
+## Prerequisites
 
 * A relatively current version of Windows
 * Internet Explorer 3 or higher installed
 
-##Build requirements (if you want to build .exe from source)
+## Build requirements (if you want to build .exe from source)
 
 * AutoIt3 (https://www.autoitscript.com)
 * AutoIt3Wrapper (part of AutoIt3 by default)
@@ -50,7 +50,7 @@ without leaving a Command Prompt open.
 * Optional: Working internet connection (needed to have signed timestamp on .exe files)
 * Optional: NSIS's makensis (http://nsis.sourceforge.net/Download) (needed to build setup)
 
-##License
+## License
 
 Dynephant is licensed using the (extremely permissive) MIT license.
 See the LICENSE.txt file.
@@ -58,7 +58,7 @@ See the LICENSE.txt file.
 The included icon is courtesy of http://www.how-to-draw-funny-cartoons.com
 (link back required by author if used)
 
-##Usage
+## Usage
 
 First, you need an account with dynv6.com, with at least one host.
 
