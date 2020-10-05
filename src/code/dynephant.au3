@@ -264,24 +264,24 @@ Func UpdateDynv6HostRecord($dynv6Host, $dynv6Token, $ipVersion = 6)
 		$dynv6UpdateResultString = BinaryToString($dynv6UpdateResultBinary)
 		;ConsoleWriteError("$dynv6UpdateResultBinary=" & $dynv6UpdateResultBinary & @LF)
 		ConsoleWriteError("$dynv6UpdateResultString=" & $dynv6UpdateResultString & @LF)
-		If $dynv6UpdateResultString == ("addresses updated" & @LF) Then
+		If $dynv6UpdateResultString == ("addresses updated") Then
 			; this will actually trigger - "host updated\n" may be returned
 			; with the HTTP status code 200
 			;ConsoleWriteError("It Worked! - " & $dynv6UpdateResultString & @LF)
 			Return 0
-		ElseIf $dynv6UpdateResultString == ("addresses unchanged" & @LF) Then
+		ElseIf $dynv6UpdateResultString == ("addresses unchanged") Then
 			; this will never happen - "invalid host\n" may be returned
 			; but the HTTP status code returned will be 404 (Not Found)
 			; resulting in an InetRead error instead
 			;ConsoleWriteError("It Failed! - " & $dynv6UpdateResultString & @LF)
 			Return 0
-		ElseIf $dynv6UpdateResultString == ("invalid host" & @LF) Then
+		ElseIf $dynv6UpdateResultString == ("invalid host") Then
 			; this will never happen - "invalid host\n" may be returned
 			; but the HTTP status code returned will be 404 (Not Found)
 			; resulting in an InetRead error instead
 			;ConsoleWriteError("It Failed! - " & $dynv6UpdateResultString & @LF)
 			Return 1
-		ElseIf $dynv6UpdateResultString == ("invalid authentication_token" & @LF) Then
+		ElseIf $dynv6UpdateResultString == ("invalid authentication_token") Then
 			; this will never happen - "invalid authentication_token\n" may be returned
 			; but the HTTP status code returned will be 401 (Unauthorized)
 			; resulting in an InetRead error instead
